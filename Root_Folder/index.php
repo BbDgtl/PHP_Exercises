@@ -9,8 +9,8 @@
 <body>
 
   <?php 
-    echo '<h1>This is my parent Exercises folder'
+    echo '<h1>This is my parent exercises folder</h1>'
   ?>
-  
+
 </body>
 </html>
