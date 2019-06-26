@@ -35,13 +35,13 @@ $array = array(
   "Red Cabbage" => "0.85"
 );
 
-sort($array);
+asort($array);
 var_dump($array);
 krsort($array);
 var_dump($array);
 
 $results = 0;
-foreach ($array as $type => $cost) {
+foreach ($array as $cost) {
   $results += $cost;
 }
 
@@ -56,6 +56,16 @@ $exampleArray = array();
 for ($i = 0; $i <= 20; $i++) {
   $exampleArray[] = $i;
 }
+
+var_dump($exampleArray);
+
+$exampleArray = array();
+$i = 0;
+while ($i <= 20) {
+  $exampleArray[] = $i;
+  $i++;
+};
+
 var_dump($exampleArray);
 
 // ** Exercise 4
@@ -68,6 +78,15 @@ for ($i = 0; $i <= 10; $i++) {
   $createdArray[] = $i * 2;
 }
 var_dump($createdArray);
+
+// ! Dynamic Solution:
+$createdArray = array();
+$multi = 2;
+for ($i = 0; $i <= 10; $i++) {
+  $createdArray[] = ($i * $multi);
+}
+var_dump($createdArray);
+
 
 // ** Exercise 5
 // TODO Create a random numerical array.
@@ -91,6 +110,32 @@ while (!$done) {
 var_dump($numbers);
 sort($numbers);
 
-$ranNum = array();
-$ranNum = rand(0, 10);
-var_dump($ranNum);
+// ! Correction:
+// Create an array of random numbers
+$numbers = array();
+for ($i = 0; $i <= 20; $i++) {
+  $numbers[] = rand(0, 100);
+}
+var_dump($numbers);
+echo 'The minimum number is : ' . min($numbers) . '<br>';
+echo 'The maximum number is : ' . max($numbers);
+
+// ** Find the min/max using a loop with no functions.
+$numbers = array();
+for ($i = 0; $i <= 20; $i++) {
+  $numbers[] = rand(0, 100);
+}
+var_dump($numbers);
+
+// ! Correction:
+$max = $numbers[0];
+$min = $numbers[0];
+foreach ($numbers as $key => $value) {
+  if ($value > $max) {
+    $max = $value;
+  } else if ($value < $max) {
+    $min = $value;
+  }
+}
+echo $max . '<br>';
+echo $min;
