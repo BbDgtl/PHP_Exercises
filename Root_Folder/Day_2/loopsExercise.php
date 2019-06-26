@@ -130,6 +130,7 @@ var_dump($numbers);
 // ! Correction:
 $max = $numbers[0];
 $min = $numbers[0];
+
 foreach ($numbers as $key => $value) {
   if ($value > $max) {
     $max = $value;
@@ -139,3 +140,23 @@ foreach ($numbers as $key => $value) {
 }
 echo $max . '<br>';
 echo $min;
+
+
+echo '<hr>';
+var_dump($numbers);
+
+$posMax = 0;
+$posMin = 0;
+foreach ($numbers as $key => $value) {
+  if ($value > $myArray[$posMax]) {
+    $posMax = $key;
+  }
+  if ($value < $myArray[$posMin]) {
+    $posMin = $key;
+  }
+}
+echo 'The greatest value is : ' . $myarray[$posMax] . '<br>';
+echo 'And, it\'s position is : ' . $posMax;
+echo '<br>';
+echo 'The lowest value is : ' . $myarray[$posMin] . '<br>';
+echo 'And, it\'s position is in : ' . $posMin;
