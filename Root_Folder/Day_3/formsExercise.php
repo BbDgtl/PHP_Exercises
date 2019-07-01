@@ -28,7 +28,7 @@
       > Step 2: Use step 1 to check if an user is allow
   -->
 
-  <form action="formsExercise2" method="POST">
+  <form action="" method="POST">
     <input type="text" name="firstName" placeholder="First Name">
     <input type="text" name="lastName" placeholder="Last Name">
     <input type="submit" name="submit" value="Send">
