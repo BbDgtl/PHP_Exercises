@@ -31,6 +31,7 @@
 
   $firstName = '';
   $lastName = '';
+  $msg = ' ';
 
   $users = array(
     "Johnny",
@@ -40,21 +41,19 @@
     "John"
   );
 
-  $msg = ' ';
-
   ?>
 
   <form action="" method="POST">
-    <input type="text" name="firstName" placeholder="First Name" value="<?php $firstName ?>">
-    <input type="text" name="lastName" placeholder="Last Name" value="<?php $lastName ?>">
+    <input type="text" name="firstName" placeholder="First Name" value="<?php echo $firstName ?>">
+    <input type="text" name="lastName" placeholder="Last Name" value="<?php echo $lastName ?>">
     <input type="submit" name="submit" value="Send">
   </form>
 
   <?php
 
-  if (!empty($_POST)) {
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
+  if (!empty($_GET)) {
+    $firstName = $_GET['firstName'];
+    $lastName = $_GET['lastName'];
     echo $firstName . ' ' . $lastName . '<br>';
 
     foreach ($users as $string) {
