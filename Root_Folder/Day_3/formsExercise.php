@@ -27,22 +27,45 @@
       
       > Step 2: Use step 1 to check if an user is allow
   -->
-
-  <form action="formsExercise2" method="POST">
-    <input type="text" name="firstName" placeholder="First Name">
-    <input type="text" name="lastName" placeholder="Last Name">
-    <input type="submit" name="submit" value="Send">
-  </form>
-
   <?php
 
   $firstName = '';
   $lastName = '';
 
+  $users = array(
+    "Johnny",
+    "Simon",
+    "Tom",
+    "Tota",
+    "John"
+  );
+
+  $msg = ' ';
+
+  ?>
+
+  <form action="" method="POST">
+    <input type="text" name="firstName" placeholder="First Name" value="<?php $firstName ?>">
+    <input type="text" name="lastName" placeholder="Last Name" value="<?php $lastName ?>">
+    <input type="submit" name="submit" value="Send">
+  </form>
+
+  <?php
+
   if (!empty($_POST)) {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
-    echo 'Hello, ' . $firstName . ' ' . $lastName;
+    echo $firstName . ' ' . $lastName . '<br>';
+
+    foreach ($users as $string) {
+      if ($firstName == $string) {
+        $msg = 'Welcome, ' . $firstName;
+        break;
+      } else {
+        $msg = 'You\'re not allowed to view this page!';
+      }
+    }
+    echo $msg;
   };
 
   ?>
