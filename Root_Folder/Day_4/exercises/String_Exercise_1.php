@@ -40,13 +40,14 @@
 		<input type="submit" name="lc" value="Lowercase">
 		<input type="submit" name="cap" value="Capitalize the first letter">
 		<input type="submit" name="cap1" value="Capitalize only the first letter">
+		<input type="submit" name="explode" value="Display the string up to a certain point">
 		<input type="submit" name="bonus" value="BONUS!">
 	</form>
 	<h1>
 
 		<?php
 		$message = '';
-		if (!empty('POST')) {
+		if (!empty($_POST)) {
 			$message = $_POST['message'];
 			if (isset($_POST['uc'])) {
 				echo strtoupper($message);
@@ -56,10 +57,14 @@
 				echo ucfirst($message);
 			} else if (isset($_POST['cap1'])) {
 				echo ucwords($message);
+			} else if (isset($_POST['explode'])) {
+				$array = explode(' ', $message);
+				echo strpos($message, '.') . '<br>';
+				echo substr($message, 0, 14);
 			} else if (isset($_POST['bonus'])) {
 				$array = explode(' ', $message);
 				if (sizeof($array) < 2) {
-					echo 'WRONG!';
+					echo 'Enter at least two words!';
 				} else {
 					echo $array[0] . '-' . $array[1];
 				}

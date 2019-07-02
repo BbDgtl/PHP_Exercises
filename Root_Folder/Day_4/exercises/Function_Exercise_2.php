@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 echo '<hr>';
 echo '<p style="font-weight: 900"> EXERCISE 1 </p>';
@@ -36,4 +36,16 @@ Write a recursive function that will calculate the factorial of a number.
 The factorial of 5 is 5! and equals to    5! = 5 * 4 * 3 * 2 * 1.
 The factorial of 5 is therefore equal to 120 (5! = 120).
 Here is the equation of a factorial: n! = n * (n - 1) * ... * 3 * 2 * 1
-?>
+
+*/
+
+function factorial($x)
+{
+  if ($x > 1)
+    return $x * factorial($x - 1);
+  else {
+    return 1;
+  }
+};
+
+echo factorial(5);
