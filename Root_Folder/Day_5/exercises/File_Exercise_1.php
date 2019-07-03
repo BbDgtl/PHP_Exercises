@@ -17,11 +17,11 @@ echo '<table border="1">';
 
 if (file_exists('transform_to_table.txt')) {
 	$file_handle = fopen('transform_to_table.txt', 'r');
-	echo $file_handle . '<br>';
+	// echo $file_handle . '<br>';
 
 	while (!feof($file_handle)) {
 		$line_of_text = fgets($file_handle);
-		echo '</td><td>', $line_of_text . '</td></tr>';
+		echo '<tr><td>', $line_of_text . '</td></tr>';
 		// echo $line_of_text . '<br>';
 	}
 
@@ -29,7 +29,7 @@ if (file_exists('transform_to_table.txt')) {
 } else {
 	echo 'File doesn\'t exist';
 }
-
+echo '</table>';
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +43,6 @@ if (file_exists('transform_to_table.txt')) {
 </head>
 
 <body>
-	<h2>Table is Below</h2>
 </body>
 
 </html>

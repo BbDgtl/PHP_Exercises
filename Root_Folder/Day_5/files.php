@@ -10,7 +10,7 @@ echo $file_content;
 */
 
 // ** Check if the file exists
-if (file_exists('files/movies.txt')) {;
+if (file_exists('files/movies.txt')) {
 
   // ** Fopen - Open a file
   $file_handle = fopen('files/movies.txt', 'r');
