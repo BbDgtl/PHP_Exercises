@@ -1,0 +1,14 @@
+// Database Design
+
+Entity-Association Diagram :
+  - The Entity (table)
+  - The attributes
+  - The relations/associations
+
+// Keys
+1 - Candidate Key
+2 - Primary Key
+3 - Alternative Key
+4 - Foreign Key
+5 - Composite Key
+
