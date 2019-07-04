@@ -15,3 +15,4 @@ CREATE TABLE movies (
   title VARCHAR(30) NOT NULL, 
   release_year YEAR
 );
+
