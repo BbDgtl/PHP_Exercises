@@ -3,15 +3,15 @@
 /*
 	In this exercise, we'll use the 'moviedb' database.
 	
-	1. First, you have to add an attribut to the 'movies' table.
-	Call this attribut 'poster', it'll save the path of the poster (image) file for each movie.
+	// 1. First, you have to add an attribut to the 'movies' table.
+	// Call this attribut 'poster', it'll save the path of the poster (image) file for each movie.
 
-	2. Create a page 'index.php'.
-	This page will display a nice message like 'Welcome to the freakin movie website' (or whatever)
-	Also display the last three movies (ordered by date of release).
+	// 2. Create a page 'index.php'.
+	// This page will display a nice message like 'Welcome to the freakin movie website' (or whatever)
+	// Also display the last three movies (ordered by date of release).
 
-	3. Create a page 'movies.php'.
-	This page will display all the movies (poster first, then above title and release year).
+	// 3. Create a page 'movies.php'.
+	// This page will display all the movies (poster first, then above title and release year).
 	
 	4. Create a page 'movie.php'.
 	This page is a descriptive page for each movie. It'll display the poster, the title, the release year but also the director's name.
