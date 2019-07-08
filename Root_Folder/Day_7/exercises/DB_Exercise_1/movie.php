@@ -18,26 +18,38 @@
 
   require_once 'database.php';
 
-  if (isset($_GET['submit'])) {
-    $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD);
-    $db_name = 'moviedb';
-    $db_found = mysqli_select_db($conn, $db_name);
+  $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
+  $db_name = DB_NAME;
+  $db_found = mysqli_select_db($conn, $db_name);
 
-    if ($db_found) {
-      $query = 'SELECT title, poster, release_year  FROM movies INNER JOIN directors ON director_id=directorID ORDER BY release_year DESC';
-      $results = mysqli_query($conn, $query);
+  if ($db_found) {
 
-      while ($db_record = mysqli_fetch_assoc($results)) {
-        echo '<br>';
-        echo '<h3>' . $db_record['title'] . '</h3>' . '<br>';
-        echo '<img height="500px" src="imgs/' . $db_record['poster'] . '">' . '<br>';
-        echo $db_record['release_year'] . '<br>';
-      }
-    } else {
-      echo "$db_name not found!";
+    $query = 'SELECT movies.title, 
+    movies.poster, 
+    movies.release_year, 
+    directors.first_name, 
+    directors.last_name  
+    FROM movies 
+    INNER JOIN directors ON director_id=directorID 
+    WHERE directors.director_id = 1
+    ORDER BY release_year DESC';
+
+    $results = mysqli_query($conn, $query);
+
+    while ($db_record = mysqli_fetch_assoc($results)) {
+      echo '<br>';
+      echo $db_record['title'] . '<br>';
+      echo '<img height="500px" src="imgs/' . $db_record['poster'] . '">' . '<br>';
+      echo $db_record['release_year'] . '<br>';
+      echo $db_record['first_name'] . ' ';
+      echo $db_record['last_name'] . '<br>';
     }
-    mysqli_close($conn);
+  } else {
+    echo "$db_name not found!";
   }
+
+  mysqli_close($conn);
+
 
   ?>
 

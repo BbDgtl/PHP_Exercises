@@ -12,7 +12,7 @@ echo 'Connection successful.' . '<br>';
 // var_dump($conn);
 
 // TODO Choose which DB to work with
-$db_name = 'moviedb';
+$db_name = DB_NAME;
 $db_found = mysqli_select_db($conn, $db_name);
 
 if ($db_found) {

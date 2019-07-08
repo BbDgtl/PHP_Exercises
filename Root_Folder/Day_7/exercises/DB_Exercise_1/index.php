@@ -18,9 +18,9 @@
 
   require_once 'database.php';
 
-  $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD);
+  $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
   // echo 'Connection successful.' . '<br>';
-  $db_name = 'moviedb';
+  $db_name = DB_NAME;
   $db_found = mysqli_select_db($conn, $db_name);
 
   echo '<h2>The 3 most recent films:</h2>';
