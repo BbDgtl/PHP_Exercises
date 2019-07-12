@@ -1,0 +1,16 @@
+input, textarea{
+    display: flex;
+    text-align: center;
+    padding:  10px;
+    margin: 20px auto;
+    
+}
+#contact{
+    background-color: black;
+    color: aliceblue;
+}
+
+#button{
+    background-color: green;
+    color: white;
+}
