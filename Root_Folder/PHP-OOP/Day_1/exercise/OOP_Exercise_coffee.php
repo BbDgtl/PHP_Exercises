@@ -99,6 +99,7 @@ class CoffeeCup
 	private $temperature;
 	private $volume;
 
+	// ***** CONSTRUCT ***** \\
 	public function __construct($volume, $brand, $temperature)
 	{
 		$this->brand = $brand;
@@ -122,12 +123,12 @@ class CoffeeCup
 	// ? Temperature method
 	public function reHeat($tempToAdd)
 	{
-		$this->temperature = $this->temperature + $tempToAdd;
+		$this->temperature += $tempToAdd;
 		echo 'The new temperature is : ' . $this->temperature . ' degrees.';
 	}
 	public function coolDown($tempToSubtract)
 	{
-		$this->temperature = $this->temperature - $tempToSubtract;
+		$this->temperature -= $tempToSubtract;
 		echo 'The new temperature is : ' . $this->temperature . ' degrees.';
 	}
 
@@ -136,10 +137,15 @@ class CoffeeCup
 		return $this->temperature;
 	}
 
+	public function getVolume()
+	{
+		return $this->volume;
+	}
+
 	// ? Sip method
 	public function sip(int $amtToDrink)
 	{
-		$this->quantity = $this->quantity - $amtToDrink;
+		$this->quantity -= $amtToDrink;
 		if ($amtToDrink > $this->quantity) {
 			$this->quantity = 0;
 			echo 'You have no more coffee' . '<br>';

@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /* 
 
@@ -78,28 +78,17 @@
 	Change your function to 'add'/'remove'/'display' an equipement.
 	Now it will add/remove/display to the inventory.
 
-	*/
+	-- Step 6 :
 
-class Character
-{
-	// ***** PROPERTIES ***** \\
-	// ? PUBLIC variables
-	public $name;
-	public $hp = 100;
-	public $ap = 10;
-	public $dp = 5;
-	public $warcray;
+	Create a method call 'getStats()'
+	This method will display all the stats of my Character.
+	It should take into account the bonus of equipments.
 
-	// ? Private variables
-	private $orcAP = 12;
-	private $orcDP = 7;
-	private $orcHP = 90;
-	private $elfDP = 2;
 
-	// ????? CONSTRUCTOR ????? \\
 
-	// ***** METHODS ***** \\
-}
 
-// Elves can flee any fight by sacrificing 20 life.
-// When an Elf wins a fight, he wins 2 defense and 2 life.
+
+
+
+
+

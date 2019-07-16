@@ -58,18 +58,18 @@ class HtmlString
   public function getBoldString()
   {
     // return $this->string;
-    return '<b>' . $this->string . '</b>';
+    return '<b>' . $this->string . '</b>' . '<br>';
   }
   // ? getItalicString Method
   public function getItalicString()
   {
     // return $this->string;
-    return '<em>' . $this->string . '</em>';
+    return '<i>' . $this->string . '</i>' . '<br>';
   }
   // ? getItalicBoldString Method
   public function getItalicBoldString()
   {
-    return $this->string;
-    echo '<strong><em>' . $this->string . '</em></strong>';
+    // echo '<b><i>' . $this->string . '</i></b>';
+    return '<i>' . $this->getBoldstring() . '</i>' . '<br>';
   }
 }

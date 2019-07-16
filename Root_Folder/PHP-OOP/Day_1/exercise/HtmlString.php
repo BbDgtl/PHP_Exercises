@@ -14,5 +14,7 @@
 
  */
 
-$markup = new HtmlString('My strinnnnngeeee');
+$markup = new HtmlString('This string is set in the constructor!');
 echo $markup->getBoldString();
+echo $markup->getItalicString();
+echo $markup->getItalicBoldString();
