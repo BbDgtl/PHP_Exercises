@@ -26,6 +26,18 @@
     Example :
  */
 
+class Monster
+{
+    private $_type;
+    private $_description;
+    private $_healthPoints;
+    private $_attackPoints;
+
+    public function __construct($type, $healthPoints){
+        $this->
+    }
+}
+
 $player = new Character();
 
 $anEnemy = new Monster('Cheezy Zombie', 140);

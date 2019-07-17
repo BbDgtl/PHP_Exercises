@@ -25,86 +25,127 @@
 
 // TODO Implement the fact that a character has (or not) an inventory.
 
-require_once 'equipment.php';
+// 
 
 class Character
 {
-
   private $_race;
-  private $_name;
   private $_attackPoints;
   private $_defensePoints;
   private $_healthPoints;
   private $_warCry;
-  private $_equipment;
+  private $_equipments;
 
-  // ***** CONSTRUCTOR **** \\
-  public function __construct($race, $_name)
+  // Constructor
+  public function __construct($race)
   {
     $this->_healthPoints = 100;
     $this->_attackPoints = 10;
     $this->_defensePoints = 5;
-    $this->_warCry = '';
+    $this->_warCry = 'Arhhhhgggg';
     $this->_equipments = array();
 
-    if ($race == 'human') {
+    if ($race === 'Orcs') {
+      // If my character is an Orc
+      $this->bonusOrcs();
       $this->_race = $race;
-      $this->_name = $_name;
-      $this->humanBonus();
-      $this->_warCry = 'Attaaack!';
-    } else if ($race == 'orc') {
+      $this->_warCry = 'wwouogrouroulou mlll !!';
+    } else if ($race === 'Elves') {
+      // If my character is an Elf
+      $this->bonusElves();
       $this->_race = $race;
-      $this->_name = $_name;
-      $this->orcBonus();
-      $this->_warCry = 'Wwouogrouroulou mlll!!';
-    } else if ($race == 'elf') {
+    } else if ($race == 'Humans') {
+      // If my character is an Human
+      $this->bonusHumans();
       $this->_race = $race;
-      $this->_name = $_name;
-      $this->elfBonus();
-      $this->_warCry = 'Lacho calad! Drego morn!!';
     } else {
-      echo 'This is not correct.';
+      // If the race is not 'valid'
+      echo 'This race is not correct';
     }
   }
 
-  // ***** METHODS ***** \\
-  // ** Character Bonus functions
-  public function humanBonus()
-  {
-    $this->_attackPoints = $this->_attackPoints;
-    $this->_healthPoints = $this->_healthPoints;
-    $this->_attackPoints = $this->_attackPoints;
-  }
 
-  public function orcBonus()
+  // Methods
+  public function bonusOrcs()
   {
-    $this->_healthPoints -= 10;
     $this->_attackPoints += 2;
     $this->_defensePoints += 2;
+    $this->_healthPoints -= 10;
   }
 
-  public function elfBonus()
+  public function bonusHumans()
+  { }
+
+  public function bonusElves()
   {
-    $this->_healthPoints = $this->_healthPoints;
-    $this->_attackPoints = $this->_attackPoints;
     $this->_defensePoints -= 3;
   }
 
-  // ** setters
-  public function addEq($equipment)
+  // Equipment methods
+  public function addEquipment($equipment)
   {
-    $this->_equipments[] = $equipment;
+    if (count($this->_equipments) < 4) {
+      $swords = 0;
+      $shield = 0;
+
+      foreach ($this->_equipments as $equip) {
+        if ($equip->getType() === 'Sword')
+          $swords++;
+
+        if ($equip->getType() === 'Shield')
+          $shield++;
+      }
+
+      if ($equipment->getType() === 'Sword' && $swords >= 2)
+        return 'You already have 2 swords';
+
+      if ($equipment->getType() === 'Shield' && $shield >= 1)
+        return 'You already have a shield';
+
+      $this->_equipments[] = $equipment;
+      return 'Equiped';
+    } else
+      return 'You already have 4 items';
   }
 
-  public function removeEq()
+  public function removeEquipment($equipment)
   {
-    $this->_equipments = null;
+    foreach ($this->_equipments as $key => $equip) {
+      if ($equipment === $equip) {
+        unset($this->_equipments[$key]);
+        return 'Item removed';
+      }
+    }
+
+    return 'Item doesn\'t match';
   }
 
-  // ** getters
-  // TODO DISPLAY the EQUIPMENT
-  public function displayEq()
+  public function displayEquipment()
+  {
+    foreach ($this->_equipments as $equip) {
+      echo $equip;
+    }
+  }
+
+  public function getEquipment()
   {
     return $this->_equipments;
+  }
+
+  public function getStats()
+  {
+    $bonusAtk = $this->_attackPoints;
+    $bonusDef = $this->_defensePoints;
+    $bonusLife = $this->_healthPoints;
+
+    foreach ($this->_equipments as $equip) {
+      $bonusAtk += $equip->getBonusAtk();
+      $bonusDef += $equip->getBonusDef();
+      $bonusLife += $equip->getBonusHealth();
+    }
+
+    return 'Atk : ' . $bonusAtk . '<br>'
+      . 'Def : ' . $bonusDef . '<br>'
+      . 'Health : ' . $bonusLife . '<br>';
   }
 }
