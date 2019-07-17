@@ -6,16 +6,18 @@
 // TODO Maybe change some methods to make it abstract methods.
 // ? Tips : If you pay attention, many of our classes can 'talk' or 'make a sound'
 
-require_once './being.php';
-
+require_once 'being.php';
 abstract class Animal extends Being
 {
-	protected $_numLegs;
-
-	// ? Constructor
-	public function __construct($name, $sex, $color, $legs = 4)
-	{
-		parent::__construct($name, $sex, $color);
-		$this->_numLegs = $legs;
-	}
+  protected $_legs;
+  public function __construct(
+    $name,
+    $sex,
+    $color,
+    $legs = 4
+  ) {
+    parent::__construct($name, $sex, $color);
+    $this->_legs = $legs;
+  }
 }
+
