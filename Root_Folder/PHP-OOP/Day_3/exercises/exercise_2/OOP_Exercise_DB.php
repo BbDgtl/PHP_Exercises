@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 
 Overview : 
@@ -17,14 +17,14 @@ Step 1: Connecting users
 	Connection page will look like this :
 */
 
-if(isset($_POST['login']) && isset($_POST['password'])) {
-    $userManager = new \Flowers\UserManager();
-    $userLogged = $userManager->login($_POST['login'], $_POST['password']);
+if (isset($_POST['login']) && isset($_POST['password'])) {
+	$userManager = new \Flowers\UserManager();
+	$userLogged = $userManager->login($_POST['login'], $_POST['password']);
 
-    if(!empty($userLogged)) {
-        $_SESSION['user']['mail']   = $userLogged->getMail();
-        $_SESSION['user']['id']     = $userLogged->getId();
-    }
+	if (!empty($userLogged)) {
+		$_SESSION['user']['mail']   = $userLogged->getMail();
+		$_SESSION['user']['id']     = $userLogged->getId();
+	}
 }
 
 /*
@@ -42,3 +42,5 @@ Step 3 :
 
 
  ?>
+
+
