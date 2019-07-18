@@ -5,25 +5,28 @@
 // ? Actually they have the same 'role'.
 // TODO Use an interface to abstract all of this.
 
-<?php
-abstract class Being{
+abstract class Being
+{
   protected $_name;
   protected $_color;
   protected $_sex;
-  public function __construct($name, $sex, $color){
+  public function __construct($name, $sex, $color)
+  {
     $this->_name = $name;
     $this->_color = $color;
     $this->_sex = $sex;
   }
-  public function getName() {
+  public function getName()
+  {
     return $this->_name;
   }
-  public function getColor() {
+  public function getColor()
+  {
     return $this->_color;
   }
-  public function getSex() {
+  public function getSex()
+  {
     return $this->_sex;
   }
   public abstract function talk();
 }
-

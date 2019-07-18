@@ -7,18 +7,19 @@
 
 require_once 'being.php';
 include_once "workInterface.php";
-class Human extends Creature implements IWork{
-  public function __toString(){
+class Human extends Being implements IWork
+{
+  public function __toString()
+  {
     return $this->_name . " who is " . $this->_sex . ", is going to work.<br>";
   }
   public function work()
   {
     return $this->_name . ' is working.<br>';
   }
-  public function makeSound()
+  public function talk()
   {
     return 'Hello, my name is ' . $this->_name
-      . ', I am a ' . $this->_sex . '<br>';
+      . ', I am a ' . $this->_sex . ' .<br>';
   }
 }
-
