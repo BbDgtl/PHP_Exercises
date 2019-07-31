@@ -43,7 +43,9 @@ if (!empty($_POST)) {
 	if (empty($_GET['city'])) {
 		$errors[] = 'La ville ne peut être vide';
 	}
-	if (count($error) > 0) {
+
+	// ! IF THERE == 0 ERRORS
+	if (count($errors) == 0) {
 		// error = 0 = insertion user
 		$insertUser = $db->prepare('INSERT INTO users (gender, firstname, lastname, email, birthdate, city) VALUES(:gender, :firstname, :lastname, :email, :birthdate, :city)');
 		$insertUser->bindValue(':gender', $post['gender']);
@@ -52,6 +54,7 @@ if (!empty($_POST)) {
 		$insertUser->bindValue(':email', $post['email']);
 		$insertUser->bindValue(':birthdate', date('Y-m-d', strtotime($post['birthdate'])));
 		$insertUser->bindValue(':city', $post['city']);
+
 		if ($insertUser->execute()) {
 			$createUser = true;
 		} else {
@@ -59,6 +62,7 @@ if (!empty($_POST)) {
 		}
 	}
 }
+
 $queryUsers = $db->prepare('SELECT * FROM users' . $order);
 if ($queryUsers->execute()) {
 	$users = $queryUsers->fetchAll();

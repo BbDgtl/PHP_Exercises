@@ -21,27 +21,31 @@ class Cat
   private $_color;
   private $_gender;
   private $_breed;
+  private static $gender_available = [
+    'male',
+    'female'
+  ];
 
   // ****** CONSTRUCT ***** \\
   public function __construct($name, $age, $color, $gender, $breed)
   {
-    $this->_name = $name;
-    $this->_age = $age;
-    $this->_color = $color;
-    $this->_gender = $gender;
-    $this->_breed = $breed;
+    $this->setName($name);
+    $this->setAge($age);
+    $this->setColor($color);
+    $this->setGender($gender);
+    $this->setBreed($breed);
   }
 
   // ***** METHODS ***** \\
   public function getInfo()
   {
-    $infoArray = array();
-    $infoArray[]  = $this->_name;
-    $infoArray[]  = $this->_age;
-    $infoArray[]  = $this->_color;
-    $infoArray[]  = $this->_gender;
-    $infoArray[]  = $this->_breed;
-    return $infoArray;
+    return [
+      'Name' => $this->_name,
+      'Age' => $this->_age,
+      'Color' => $this->_color,
+      'Gender' => $this->_gender,
+      'Breed' => $this->_breed
+    ];
   }
 
   // * GETTERS * \\
@@ -73,26 +77,51 @@ class Cat
   // * SETTERS * \\
   public function setName($newName)
   {
-    $this->_name = $newName;
+    if (
+      is_string($newName) && (strlen($newName) >= 3 && strlen($newName) <= 20)
+    )
+      $this->_name = $newName;
+    else
+      echo "Name is invalid.";
   }
 
   public function setAge($newAge)
   {
-    $this->_age = $newAge;
+    if (
+      is_int($newAge)
+    )
+      $this->_age = $newAge;
+    else
+      echo "Age is invalid.";
   }
 
   public function setColor($newColor)
   {
-    $this->_color = $newColor;
+    if (
+      is_string($newColor) && (strlen($newColor) >= 3 && strlen($newColor) <= 10)
+    )
+      $this->_color = $newColor;
+    else
+      echo "Color is invalid.";
   }
 
   public function setGender($newGender)
   {
-    $this->_gender = $newGender;
+    if (
+      is_string($newGender) && (in_array($newGender, self::$gender_available))
+    )
+      $this->_gender = $newGender;
+    else
+      echo "Gender is invalid.";
   }
 
   public function setBreed($newBreed)
   {
-    $this->_breed = $newBreed;
+    if (
+      is_string($newBreed) && (strlen($newBreed) >= 3 && strlen($newBreed) <= 20)
+    )
+      $this->_breed = $newBreed;
+    else
+      echo "Breed is invalid.";
   }
 }

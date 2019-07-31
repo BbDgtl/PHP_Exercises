@@ -1,20 +1,50 @@
 <?php
 
-require_once 'User.php';
+// $user_data = array();
 
-$my_file = 'users.json';
-$arr_data = array();
-
+// If submit button is clicked...
 if (isset($_POST['submit'])) {
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $newUser = new User($name, $email);
-  $json = json_encode($newUser, JSON_PRETTY_PRINT);
-  // var_dump($json);
+  // Check if the inputs contain data...
+  if (empty($_POST['name']) || empty($_POST['email'])) {
+    echo "You must fill in both inputs.";
+  } else {
+    require_once 'User.php';
+    $newUser = new User($_POST['name'], $_POST['email']);
+    // var_dump($user);
+    // I need to get all the users
+    $jsonFile = file_get_contents("users.json");
+    $userArray = json_decode($jsonFile);
+    // var_dump($userArray);
 
-  $jsonFile = file_get_contents("users.json");
-  $arr_data = json_decode($json, true);
+    // Loop through all users to check for a match with 
+    // data from the form
+    $found = false;
+    foreach ($userArray as $user) {
+      if (
+        $user->name === $newUser->getName() && $user->email === $newUser->getEmail()
+      ) {
+        // User already exists
+        $found = true;
+        break;
+      }
+    }
+
+    // If user exits :
+    if ($found) {
+      echo 'Welcome, ' . $newUser->getName();
+    } else {
+      // If user doesn't exist
+      // 1 - Save into json
+      $userArray[] = $newUser;
+      // var_dump($userArray);
+      // 2 - Say welcome new user
+      $myJson = json_encode($userArray, JSON_PRETTY_PRINT);
+      file_put_contents('users.json', $myJson);
+      echo 'Welcome new user !';
+    }
+  }
 }
+var_dump($userArray);
 
 ?>
 
@@ -34,7 +64,7 @@ if (isset($_POST['submit'])) {
       Contact Information:
       <input type="text" name="name" placeholder="Your Name">
       <input type="email" name="email" placeholder="Your Email">
-      <input type="submit" name="submit">
+      <input type="submit" name="submit" value="Log In">
     </label>
   </form>
 </body>

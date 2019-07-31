@@ -13,7 +13,5 @@
 		-- If he exists, display a message 'Welcome, old member'.
 		-- Else, you save this user in the JSON file and display 'Welcome, new user'
 		-- We can save multiple users in the same json file.
+/*
 
-
-
- ?>

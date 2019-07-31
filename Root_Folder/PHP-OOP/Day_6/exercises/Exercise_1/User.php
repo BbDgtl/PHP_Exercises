@@ -11,6 +11,16 @@ class User implements JsonSerializable
     $this->email = $email;
   }
 
+  public function getName()
+  {
+    return $this->name;
+  }
+
+  public function getEmail()
+  {
+    return $this->email;
+  }
+
   // TODO: Override the method.
   public function jsonSerialize()
   {

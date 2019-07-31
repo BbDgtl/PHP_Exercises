@@ -11,7 +11,7 @@ Table "users" :       |       Table "articles"
   - lastname          |         - content
   - email             |         - picture 
   - role              |         - date_publish
-                      |         - id_user (secondary key)
+                      |         - id_user (foreign key)
 
 */
 
@@ -19,4 +19,12 @@ Table "users" :       |       Table "articles"
 
 $query = 'SELECT articles.title, users.first_name, users.last_name 
 FROM articles INNER JOIN users 
-ON articles.id_user=users.id_user WHERE id=10';
+ON articles.id_user=users.id_user WHERE users.id=10';
+
+// !!!!! CORRECTION !!!!! \\
+
+$query = 'SELECT *
+FROM users 
+INNER JOIN articles 
+ON users.id=articles.id_user 
+WHERE articles.id=10';

@@ -6,16 +6,16 @@
 
 	- Part 1
 
-		// A script ask for a number (create a form).
+		A script ask for a number (create a form).
 
 	- Part 2
 
-		// Create a function that expect an argument $number.
-		// User should now enter an integer between 1 and $number.
-		// Edit your function to match these constraints.
-		// Each time you call the function, you can generate the $number randomly if you want.
+		Create a function that expect an argument $number.
+		User should now enter an integer between 1 and $number.
+		Edit your function to match these constraints.
+		Each time you call the function, you can generate the $number randomly if you want.
 
-		// For example : myFunction(50) -> Now the user should enter a number between 1 and 50.
+		For example : myFunction(50) -> Now the user should enter a number between 1 and 50.
 
 	- Part 3
 
