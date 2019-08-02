@@ -1,0 +1,39 @@
+/*!
+Theme Name: Divi-child
+Template: Divi
+Theme URI:
+Version: 1.0
+Description: Learning child theme for the Divi theme
+Author: NumericALL
+Author URI: http://www.elegantthemes.com
+Tags:
+*/
+
+@import url('../Divi/style.css');
+
+#theDate {
+  position: absolute;
+  top: 33px;
+  left: 120px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.wpcf7-form {
+  background-color: #f7f7f7;
+}
+
+.container {
+  width: 80%;
+}
+
+.container::before {
+  display: none;
+}
+
+#sidebar {
+  margin-top: 6rem;
+  padding-top: 2rem;
+  height: 500px;
+  background-color: #f7f7f7;
+}

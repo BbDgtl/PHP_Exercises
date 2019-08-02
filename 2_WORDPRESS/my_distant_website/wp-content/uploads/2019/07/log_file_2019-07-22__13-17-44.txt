@@ -1,0 +1,46 @@
+
+---Downloaded files---
+The import files for: Demo content were successfully downloaded!
+Initial max execution time = 120
+Files info:
+Site URL = http://localhost/wordpress-webmaster
+Data file = C:\wamp64\www\wordpress-webmaster/wp-content/themes/sydney/demo-content/demo-content.xml
+Widget file = C:\wamp64\www\wordpress-webmaster/wp-content/themes/sydney/demo-content/demo-widgets.wie
+Customizer file = C:\wamp64\www\wordpress-webmaster/wp-content/themes/sydney/demo-content/demo-customizer.dat
+Redux files:
+not defined!
+
+------
+New AJAX call!
+[ERROR] Failed to import "imac-606765_1280" (Media)
+
+
+---Importing widgets---
+Sidebar : 
+
+Search - No Title - Imported
+Recent Posts - No Title - Imported
+Recent Comments - No Title - Imported
+Archives - No Title - Imported
+Categories - No Title - Imported
+Meta - No Title - Imported
+
+Footer 1 : 
+
+Video - No Title - Imported
+
+Footer 2 : 
+
+Text - No Title - Imported
+
+Footer 3 : 
+
+Sydney: Contact info - Get in touch - Imported
+
+
+
+---Importing customizer settings---
+Customizer settings import finished!
+
+---pt-ocdi/after_import---
+
