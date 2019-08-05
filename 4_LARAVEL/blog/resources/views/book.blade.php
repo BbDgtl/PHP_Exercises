@@ -1,21 +1,10 @@
 @extends('layouts.mytemplate')
 
-@section('title', 'Book Page Title')
+@section('title', '{{ Book Details }}')
 
 @section('content')
-<h1>Welcome to the Book Page</h1>
-<p>This is the book : {{ $id }}</p>
-
-@if(count($authors))
-<ul>
-    @foreach($authors as $author)
-    <li>Name :{{ $author }}</li>
-    @endforeach
-</ul>
-@endif
+<h1>Book Details</h1>
+<p><strong>Title: </strong> {{ $book->title }}</p>
+<p><strong>Author: </strong> {{ $book->author }}</p>
 
 @endsection
-
-<div>
-    <p>More content.</p>
-</div>

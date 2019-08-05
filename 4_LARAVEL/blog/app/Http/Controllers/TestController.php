@@ -23,4 +23,9 @@ class TestController extends Controller
 
         return view('book', ['id' => $id, 'authors' => $authors]);
     }
+
+    public function update()
+    {
+        return view('update');
+    }
 }

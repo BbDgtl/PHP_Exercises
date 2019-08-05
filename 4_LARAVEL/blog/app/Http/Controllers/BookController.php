@@ -1,25 +1,12 @@
 <?php
 
-// ***** Step 2 :
-
-// 	? Create a controller named 'UserController'.
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
-class UserController extends Controller
+class BookController extends Controller
 {
-
-    // ? In the controller, create the method 'show'.
-    // ? This method will query the database to get all the users.
-    // ? It will display the view 'users'
-    public function show()
-    {
-        // DB::select('SELECT * FROM users');
-        return view('users');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $books = DB::select('SELECT * FROM books');
+        return view('books', ['books' => $books]);
     }
 
     /**
@@ -37,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('new-book');
     }
 
     /**
@@ -48,7 +36,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::insert('INSERT INTO books(author, title) VALUES(?, ?)', [$request->author, $request->title]);
+        return redirect('books');
     }
 
     /**
@@ -57,10 +46,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    // {
-    //     //
-    // }
+    public function show($id)
+    {
+        $book = DB::select('SELECT * FROM books WHERE books.id_book = ?', [$id]);
+
+        return view('book', ['book' => $book[0]]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -70,7 +61,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = DB::select('SELECT * FROM books WHERE books.id_book = ?', [$id]);
+        return view('edit-book', ['book' => $book[0]]);
     }
 
     /**
@@ -82,7 +74,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::update('UPDATE books SET title=?, author=? WHERE id_book=?', [$request->title, $request->author, $id]);
+        return redirect('books');
     }
 
     /**
@@ -93,6 +86,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete('DELETE FROM books WHERE books.id_book=?', [$id]);
+        return redirect('books');
     }
 }
