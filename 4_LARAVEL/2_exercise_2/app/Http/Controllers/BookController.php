@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\Book;
 
 class BookController extends Controller
 {
@@ -14,8 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = DB::select('SELECT *
-        FROM book');
+        $books = Book::all();
 
         return view('books', ['books' => $books]);
     }
@@ -38,10 +37,33 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        DB::insert('INSERT INTO book(author, title)
-        VALUES(?, ?)', [$request->author, $request->title]);
 
-        return redirect('books');
+        $validatedData = \Validator::make(
+            $request->all(),
+            [
+                'title' => 'required|min:4|max:20',
+                'author' => 'required'
+            ]
+        );
+
+        if ($validatedData->fails()) {
+            return response()->json(
+                [
+                    'errors' => $validatedData->errors()->all()
+                ]
+            );
+        } else {
+            $book = new Book();
+            $book->title = $request->title;
+            $book->author = $request->author;
+            $book->save();
+
+            return response()->json(
+                [
+                    'success' => 'Record successfully inserted'
+                ]
+            );
+        }
     }
 
     /**
@@ -52,11 +74,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $book = DB::select('SELECT *
-        FROM book
-        WHERE book.id_book = ?', [$id]);
+        $book = Book::find($id);
 
-        return view('book', ['book' => $book[0]]);
+        return view('book', ['book' => $book]);
     }
 
     /**
@@ -67,11 +87,9 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        $book = DB::select('SELECT *
-        FROM book
-        WHERE book.id_book = ?', [$id]);
+        $book = Book::find($id);
 
-        return view('edit-book', ['book' => $book[0]]);
+        return view('edit-book', ['book' => $book]);
     }
 
     /**
@@ -83,13 +101,10 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::update('UPDATE book
-        SET title=?, author=?
-        WHERE book.id_book = ?', [
-            $request->title,
-            $request->author,
-            $id
-        ]);
+        $book = Book::find($id);
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->save();
 
         return redirect('books');
     }
@@ -102,9 +117,7 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        DB::delete('DELETE FROM book
-        WHERE book.id_book = ?', [$id]);
-
+        Book::destroy($id);
         return redirect('books');
     }
 }
